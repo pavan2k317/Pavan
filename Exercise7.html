@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-7</title>
+</head>
+<body>
+    <!-- 7.a create a function-->
+     <script>
+        function greet() {
+            console.log("Hello!");
+        }
+        greet();
+     </script>
+
+     <!--7.b function with parameter-->
+
+     <script>
+         function greet(name) {
+            console.log(`Hello ${name}`);
+        }
+        greet("Pavan");
+     </script>
+
+     <!--7.c Handling undefined Name-->
+     <script>
+         function greet(name) {
+            if (!name) {
+                console.log("Hey there!");
+            } else {
+                console.log(`Hello ${name}`);
+        }
+    }
+        greet();
+        greet("Pavan");
+     </script>
+
+     <!--7.d  convert celsius to fahrenheit-->
+     <script>
+        function conToFah(celsius) {
+            return (celsius * 9/5) + 32;
+        }
+        a=conToFah(25);
+        console.log(`Celsius to Fahrenheit is : ${a}`);
+     </script>
+
+     <!--7.e Fahrenheit to celsius-->
+     <script>
+        function fahToCel(fah) {
+            return (fah - 32) * 5/9;
+        }
+        res = fahToCel(86);
+        console.log(`Fahrenheit to celsius is ${res}`);
+     </script>
+
+     <!--7.f convert temperature-->
+     <script>
+        function temperature(degrees,unit) {
+            if (unit === 'C') {
+                return `${temperature(degrees)}F`;
+            } else if (unit === 'F') {
+                return `${temperature(degrees)}C`;
+            } else {
+                return 'Invalid unit';
+            }
+        }
+        res1 = temperature(25,'C');
+        console.log(`Temperature in Celsius : ${res1}`);
+        res2 = temperature(86,'F');
+        console.log(`Temperature in Fahrenhreit : ${res2}`);
+
+     </script>
+
+     <!--7.g,h,i-->
+     <script>
+        function convertLength(length,from,to)
+         {
+           if(from==='miles' && to==='km')
+            {
+              console.log(`Kilometers=${length*1.6}`);
+            }
+           else if(from==='miles' && to==='ft')
+            {
+              console.log(`Feet=${length*5280}`);
+            }
+           else if(from==='km' && to==='ft')
+            {
+             console.log(`Feet=${length*3281}`);
+            }
+           else
+            {
+            console.log(`Miles=${length/1.6}`);
+            }
+         }
+       convertLength(32,'km','miles');      
+     </script>
+    
+</body>
+</html>

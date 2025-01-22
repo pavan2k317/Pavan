@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-6</title>
+</head>
+<body>
+    <!--6.a-->
+    <script>
+        let hour=new Date().getHours();
+        if(hour>=6 && hour<=12)
+          {
+            console.log("Good morning");
+          }
+         else if(hour>=13 && hour<=17)
+          {
+            console.log('Good Afternoon');
+ 
+          }
+          else 
+           {
+            console.log(`Good Night`);
+ 
+          }
+     </script>
+
+     <!--6.b-->
+
+     <script>
+       // let hour=10;
+        if(hour>=6 && hour<=12)
+          {
+            console.log("Good morning");
+          }
+         else if(hour>=13 && hour<=17)
+          {
+            console.log('Good Afternoon');
+ 
+          }
+          else 
+           {
+            console.log(`Good Night`);
+ 
+          }
+     </script>
+
+     <!--6.c-->
+
+     <script>
+       // let hour =new Date().getHours();
+        let name='Manikanta'
+        if(hour >=6 && hour<=12)
+          {
+            console.log(`Good morning ${name}`);
+          }
+         else if(hour>=13 && hour<=17)
+          {
+            console.log(`Good Afternoon ${name}`);
+ 
+          }
+          else 
+           {
+            console.log(`Good Night ${name}`);
+ 
+          }
+     </script>
+
+     <!--6.d,e-->
+     <script>
+        let age=5;
+        const isHoliday=true;
+        if((age<=6 || age>=65)&& !isHoliday)
+          {
+            console.log('Discount');
+          }
+         else
+          {
+             console.log('No Discount');
+          }							
+      </script>
+
+      <!--6.f,g,h,i,j-->
+
+      <script>
+        let ranNum=Math.random(); //6.f
+
+        //6.g,h
+
+        let result = ranNum < 0.5 ? "heads" : "tails";
+        console.log(result);
+
+        //6.i
+
+        let guess = "heads";
+
+        //6.j
+
+        console.log(guess === result ? "You Win" : "You Lose");
+
+      </script>
+
+
+        <!--6.k,l Shopping Cart-->
+    <h2>Shopping Cart</h2>
+    <p>Quantity: <span id="quantity">0</span></p>
+    <button onclick="updateQuantity(1)">Add to cart</button>
+    <button onclick="updateQuantity(-1)">Remove from cart 1</button>
+    <button onclick="updateQuantity(-2)">Remove 2</button>
+    <button onclick="updateQuantity(-3)">Remove 3</button>
+
+    <script>
+        let quantity = 0;
+        const maxQuantity = 10;
+        const minQuantity = 0;
+
+        function updateQuantity(change) {
+            let newQuantity = quantity + change;
+
+            if (newQuantity > maxQuantity) {
+                alert("The cart is full");
+                return;
+            }
+
+            if (newQuantity < minQuantity) {
+                alert("Not enough items in the cart");
+                return;
+            }
+
+            quantity = newQuantity;
+            document.getElementById("quantity").textContent = quantity;
+            //console.log("Quantity updated:", quantity);
+        }
+    </script>
+
+
+
+</body>
+</html>
+

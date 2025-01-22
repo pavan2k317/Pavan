@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--5.a,b-->
+    <script>
+        let name="Mani";
+         console.log(`My name is:${name}`);
+      </script>
+
+      <!--5.c,d,e,f,g-->
+      <script>
+        let cost=5+2*3+9;
+        console.log(`Cost of food:$${cost}`);
+        let tax=cost*0.1;
+        console.log(`Tax(10%):$${tax}`);
+        let totalCost=cost+tax;
+        console.log(`Total cost:$${totalCost}`);
+         
+      </script>
+
+      <!--5.h,i,j,k-->
+      <h3>Items in the cart</h3>
+      <script>
+        let cartQuantity=0;
+     </script>
+        <button onClick="alert(`Items in the Cart:${cartQuantity=cartQuantity+4}`)">+4</button><br>
+        <button onClick="alert(`Items in the Cart:${cartQuantity=cartQuantity+5}`)">+5</button><br>
+        <button onClick="alert(`Items in the Cart:${cartQuantity=cartQuantity-1}`)">Remove from the cart</button><br>
+        <button onClick="alert(`Items in the Cart:${cartQuantity=cartQuantity-2}`)">-2</button><br>
+        <button onClick="alert(`Items in the Cart:${cartQuantity=cartQuantity-3}`)">-3</button><br>
+ 
+<h3>Calculator</h3>
+
+
+    <!--5.l,m,n,o,p,q,r-->
+    <script>
+        let calculation='';
+     </script>
+        <button onClick="alert(`${calculation+='1'}`)">1</button>
+        <button onClick="alert(`${calculation+='2'}`)">2</button>
+        <button onClick="alert(`${calculation+='3'}`)">3</button>
+        <button onClick="alert(`${calculation+=' + '}`)">+</button>
+        <button onClick="alert(`calculation::${calculation=eval(calculation)}`)">=</button>
+</body>
+</html>

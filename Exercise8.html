@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-8</title>
+</head>
+<body>
+    <h1>Exercise 8</h1>
+
+    <!-- 8.a,b,c -->
+    <button onclick="displayProductInfo()">Show Product Info</button>
+    <div id="product-info"></div>
+
+    <!-- 8.d -->
+    <button onclick="compareProductPrices()">Compare Product Prices</button>
+    <div id="product-comparison"></div>
+
+    <!-- 8.e -->
+    <button onclick="checkIfSameProduct()">Check If Same Product</button>
+    <div id="same-product-check"></div>
+
+    <!-- 8.f,g -->
+    <button onclick="stringManipulations()">String Manipulations</button>
+    <div id="string-manipulations"></div>
+
+    <!-- 8.i,j,k -->
+    <button onClick="playGame('heads')">Heads</button>
+    <button onClick="playGame('tails')">Tails</button>
+    <div id="game-result"></div>
+
+    <script>
+        // 8.a, b, c
+        function displayProductInfo() {
+            let product = {
+                name: 'Basketball',
+                price: 2095,
+                delivery_time: '3 days'
+            };
+            document.getElementById('product-info').innerHTML = 
+                `Name: ${product.name}<br>
+                 Price: $${product.price + 500}<br>
+                 Delivery Time: ${product.delivery_time}`;
+        }
+
+        // 8.d
+        function compareProductPrices() {
+            let product1 = { name: 'Basketball', price: 2095 };
+            let product2 = { name: 'Football', price: 2000 };
+            let comparison = product1.price < product2.price ? 
+                'Product 1 is less expensive' : 'Product 2 is less expensive';
+            document.getElementById('product-comparison').innerText = comparison;
+        }
+
+        // 8.e
+        function checkIfSameProduct() {
+            let product1 = { name: 'Basketball', price: 2000 };
+            let product2 = { name: 'Basketball', price: 2000 };
+            let isSame = (product1.name === product2.name && product1.price === product2.price) ? 
+                'True' : 'False';
+            document.getElementById('same-product-check').innerText = isSame;
+        }
+
+        // 8.f, g
+        function stringManipulations() {
+            let str = 'GOOD MORNING';
+            let result = `Lowercase: ${str.toLowerCase()}<br>Repeated: ${str.repeat(2)}`;
+            document.getElementById('string-manipulations').innerHTML = result;
+        }
+
+        // 8.i, j, k
+        let result = Math.random() <= 0.5 ? 'heads' : 'tails';
+        function playGame(guess) {
+            let message = result === guess ? 'You win!' : 'You lose!';
+            document.getElementById('game-result').innerText = message;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 10 Exercises</title>
+    <style>
+        /* Styles for various buttons and calculators */
+        .amazon-button {
+            background-color: rgb(255, 216, 20);
+            border: none;
+            padding: 10px 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .amazon-button:hover {
+            background-color: rgb(240, 200, 10);
+        }
+
+        .uber-request, .uber-schedule {
+            padding: 10px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .uber-request {
+            background-color: black;
+            color: white;
+            border: none;
+        }
+        .uber-schedule {
+            background-color: rgb(230, 230, 230);
+            border: none;
+        }
+        .uber-request:hover {
+            background-color: rgb(50, 50, 50);
+        }
+        .uber-schedule:hover {
+            background-color: rgb(200, 200, 200);
+        }
+
+        .toggle-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .is-toggled {
+            background-color: blue;
+            color: white;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        .calculator {
+            width: 300px;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px auto;
+        }
+        .display {
+            width: 90%;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            background-color: #444;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            padding: 10px;
+            font-size: 18px;
+            background-color: #555;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button.operator {
+            background-color: #f44336;
+        }
+        .button.equal {
+            background-color: #4caf50;
+        }
+        .button:hover {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lesson 10 Exercises</h1>
+
+    <section>
+        <h2>10a: Amazon Button</h2>
+        <button class="amazon-button">Add to Cart</button>
+    </section>
+
+    <section>
+        <h2>10b: Uber Buttons</h2>
+        <button class="uber-request">Request now</button>
+        <button class="uber-schedule">Schedule for later</button>
+    </section>
+
+    <section>
+        <h2>10c: Check if Button has Class</h2>
+        <button class="js-button">Test</button>
+        <script>
+            const button = document.querySelector('.js-button');
+            console.log(button.classList.contains('js-button')); // true
+        </script>
+    </section>
+
+    <section>
+        <h2>10d, 10e, 10g: Toggle Buttons</h2>
+        <div>
+            <button class="toggle-button" onclick="toggleButton(this)">Gaming</button>
+            <button class="toggle-button" onclick="toggleButton(this)">Music</button>
+            <button class="toggle-button" onclick="toggleButton(this)">Tech</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>10h: Amazon Shipping Calculator</h2>
+        <div>
+            <input type="number" class="input-cost" placeholder="Enter cost">
+            <button onclick="calculateShipping()">Calculate</button>
+            <p class="error-message"></p>
+        </div>
+    </section>
+
+    <section>
+        <h2>10i, 10j: Calculator</h2>
+        <div class="calculator">
+            <input type="text" class="display" id="display" disabled>
+            <div class="buttons">
+                <button class="button" onclick="appendToDisplay('7')">7</button>
+                <button class="button" onclick="appendToDisplay('8')">8</button>
+                <button class="button" onclick="appendToDisplay('9')">9</button>
+                <button class="button operator" onclick="appendToDisplay('/')">/</button>
+                <button class="button" onclick="appendToDisplay('4')">4</button>
+                <button class="button" onclick="appendToDisplay('5')">5</button>
+                <button class="button" onclick="appendToDisplay('6')">6</button>
+                <button class="button operator" onclick="appendToDisplay('*')">*</button>
+                <button class="button" onclick="appendToDisplay('1')">1</button>
+                <button class="button" onclick="appendToDisplay('2')">2</button>
+                <button class="button" onclick="appendToDisplay('3')">3</button>
+                <button class="button operator" onclick="appendToDisplay('-')">-</button>
+                <button class="button" onclick="appendToDisplay('0')">0</button>
+                <button class="button" onclick="appendToDisplay('.')">.</button>
+                <button class="button equal" onclick="calculate()">=</button>
+                <button class="button operator" onclick="appendToDisplay('+')">+</button>
+                <button class="button" onclick="clearDisplay()">C</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleButton(clickedButton) {
+            document.querySelectorAll('.toggle-button').forEach(button => {
+                button.classList.remove('is-toggled');
+            });
+            clickedButton.classList.add('is-toggled');
+        }
+
+        function calculateShipping() {
+            const input = document.querySelector('.input-cost');
+            const errorMessage = document.querySelector('.error-message');
+
+            if (input.value < 0) {
+                errorMessage.textContent = "Error: cost cannot be less than $0";
+            } else {
+                errorMessage.textContent = "";
+            }
+        }
+
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>

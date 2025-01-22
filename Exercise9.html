@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise-9</title>
+</head>
+<body>
+    <h1>Exercise 9</h1>
+
+    <!-- 9.a, 9.b -->
+    <button>9a</button>
+    <button class="secondButton">9b</button>
+    <script>
+      console.log(document.querySelector('button'));
+      let secondButton = document.querySelector('.secondButton');
+      secondButton.textContent = '9b done!';
+    </script>
+
+    <!-- 9.c -->
+    <button onClick="playGame('heads')">Heads</button>
+    <button onClick="playGame('tails')">Tails</button>
+    <p id="p1">You chose:</p>
+    <script>
+      let num = Math.random();
+      let result = num <= 0.5 ? 'heads' : 'tails';
+      
+      function playGame(guess) {
+        document.getElementById('p1').textContent = `You chose: ${guess}`;
+        guess = guess.toLowerCase();  // Handle case sensitivity
+        if (result === guess) {
+          alert('You win!');
+        } else {
+          alert('You lose!');
+        }
+      }						
+    </script>
+
+    <!-- 9.d, 9.e, 9.f -->
+    <input type="text" id="name" placeholder="Enter your name">
+    <button onClick="displayName()">Submit</button>
+    <p id="id1"></p>
+    <script>
+      function displayName() {
+        let name = document.getElementById('name').value;
+        document.getElementById('id1').textContent = `Your name is: ${name}`;
+      }
+
+      document.getElementById('name').onkeyup = function(event) {
+        if (event.key === 'Enter') {
+          displayName();
+        }
+      };
+    </script>
+</body>
+</html>
