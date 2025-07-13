@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scientific Calculator Project</title>
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .calculator {
+      background: #111;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #display {
+      background: #000;
+      color: #0ff;
+      font-size: 28px;
+      padding: 15px;
+      text-align: right;
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      width: 300px;
+      box-shadow: inset 0 0 10px #0ff;
+      overflow-x: auto;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 70px);
+      grid-auto-rows: 60px;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .buttons button {
+      font-size: 18px;
+      color: #0ff;
+      background: transparent;
+      border: 2px solid #0ff;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+    }
+
+    .buttons button:hover {
+      background: #0ff;
+      color: #000;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff inset;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div id="display">0</div>
+    <div class="buttons">
+      <button onclick="append('Math.sin(')">sin</button>
+      <button onclick="append('Math.cos(')">cos</button>
+      <button onclick="append('Math.tan(')">tan</button>
+      <button onclick="append('Math.sqrt(')">√</button>
+      <button onclick="append('Math.log10(')">log</button>
+      <button onclick="append('Math.log(')">ln</button>
+      <button onclick="append('**')">^</button>
+      <button onclick="append('!')">!</button>
+      <button onclick="append('%')">mod</button>
+      <button onclick="memoryPlus()">M+</button>
+      <button onclick="memoryRecall()">MR</button>
+      <button onclick="memoryClear()">MC</button>
+      <button onclick="append('(')">(</button>
+      <button onclick="append(')')">)</button>
+      <button onclick="backspace()">←</button>
+      <button onclick="clearDisplay()">AC</button>
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('/')">/</button>
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('*')">*</button>
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('-')">-</button>
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="append('+')">+</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+    let memory = 0;
+
+    function append(value) {
+      if (display.textContent === '0') {
+        display.textContent = value;
+      } else {
+        display.textContent += value;
+      }
+    }
+
+    function clearDisplay() {
+      display.textContent = '0';
+    }
+
+    function backspace() {
+      display.textContent = display.textContent.slice(0, -1);
+      if (display.textContent === '') {
+        display.textContent = '0';
+      }
+    }
+
+    function calculate() {
+      try {
+        let expression = display.textContent;
+        expression = expression.replace(/\^/g, '**');
+        let result = eval(expression);
+        display.textContent = result;
+      } catch (e) {
+        display.textContent = 'Error';
+      }
+    }
+
+    function memoryPlus() {
+      try {
+        memory = eval(display.textContent);
+      } catch (e) {
+        display.textContent = 'Error';
+      }
+    }
+
+    function memoryRecall() {
+      display.textContent = memory.toString();
+    }
+
+    function memoryClear() {
+      memory = 0;
+    }
+  </script>
+</body>
+</html>
